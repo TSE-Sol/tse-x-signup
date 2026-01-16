@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSE-X Beta Tester Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 20px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-950 flex items-center justify-center p-4">
+  
+  <!-- Form Container -->
+  <div id="formContainer" class="bg-gray-900 rounded-2xl p-8 max-w-lg w-full border border-gray-800">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center px-5 py-3 bg-gray-800 border border-gray-700 rounded-xl mb-4">
+        <span class="text-white font-bold text-lg">TSE-<span class="text-blue-400">X</span></span>
+      </div>
+      <h1 class="text-2xl font-bold text-white mb-2">Become a Beta Tester</h1>
+      <p class="text-gray-400">Join the TSE-X TestFlight program</p>
+    </div>
+
+    <form id="testerForm" class="space-y-5">
+      <!-- Full Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Full Name <span class="text-red-400">*</span>
+        </label>
+        <input
+          type="text"
+          name="fullName"
+          required
+          class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+          placeholder="John Doe"
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Email (Apple ID) <span class="text-red-400">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+          placeholder="your@email.com"
+        />
+      </div>
+
+      <!-- iPhone Model & iOS Version -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">
+            iPhone Model <span class="text-red-400">*</span>
+          </label>
+          <select
+            name="iphoneModel"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer"
+          >
+            <option value="">Select...</option>
+            <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
+            <option value="iPhone 16 Pro">iPhone 16 Pro</option>
+            <option value="iPhone 16 Plus">iPhone 16 Plus</option>
+            <option value="iPhone 16">iPhone 16</option>
+            <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
+            <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+            <option value="iPhone 15 Plus">iPhone 15 Plus</option>
+            <option value="iPhone 15">iPhone 15</option>
+            <option value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
+            <option value="iPhone 14 Pro">iPhone 14 Pro</option>
+            <option value="iPhone 14 Plus">iPhone 14 Plus</option>
+            <option value="iPhone 14">iPhone 14</option>
+            <option value="iPhone 13 or older">iPhone 13 or older</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">
+            iOS Version
+          </label>
+          <select
+            name="iosVersion"
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer"
+          >
+            <option value="">Select...</option>
+            <option value="iOS 18">iOS 18</option>
+            <option value="iOS 17">iOS 17</option>
+            <option value="iOS 16">iOS 16</option>
+            <option value="iOS 15 or older">iOS 15 or older</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Has Arduino -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Do you have an Arduino? <span class="text-red-400">*</span>
+        </label>
+        <div class="flex gap-4">
+          <label class="flex items-center gap-3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl cursor-pointer hover:border-gray-600 transition flex-1">
+            <input
+              type="radio"
+              name="hasArduino"
+              value="yes"
+              required
+              class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500"
+            />
+            <span class="text-white">Yes</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl cursor-pointer hover:border-gray-600 transition flex-1">
+            <input
+              type="radio"
+              name="hasArduino"
+              value="no"
+              class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 focus:ring-blue-500"
+            />
+            <span class="text-white">No</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- TSE Bonus Notice -->
+      <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-4">
+        <p class="text-amber-200 text-sm">
+          🎁 <span class="font-medium">Bonus:</span> Some qualified testers will be selected to receive TSE tokens for testing!
+        </p>
+      </div>
+
+      <!-- Wallet Checkboxes -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-3">
+          Which wallets do you have? <span class="text-gray-500">(select all that apply)</span>
+        </label>
+        <div class="space-y-3">
+          <label class="flex items-center gap-3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl cursor-pointer hover:border-gray-600 transition">
+            <input
+              type="checkbox"
+              name="hasPhantom"
+              value="true"
+              class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+            />
+            <span class="text-white">Phantom Wallet</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl cursor-pointer hover:border-gray-600 transition">
+            <input
+              type="checkbox"
+              name="hasMetamask"
+              value="true"
+              class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+            />
+            <span class="text-white">MetaMask</span>
+          </label>
+          <label class="flex items-center gap-3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl cursor-pointer hover:border-gray-600 transition">
+            <input
+              type="checkbox"
+              name="hasCoinbase"
+              value="true"
+              class="w-4 h-4 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+            />
+            <span class="text-white">Coinbase Wallet</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Solana Address -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Phantom Wallet Solana Address <span class="text-gray-500">(optional)</span>
+        </label>
+        <input
+          type="text"
+          name="solanaAddress"
+          class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition font-mono text-sm"
+          placeholder="e.g. 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU"
+        />
+        <p class="text-gray-500 text-xs mt-2">If selected, TSE tokens will be sent to this address</p>
+      </div>
+
+      <!-- Interest -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Why are you interested in testing?
+        </label>
+        <textarea
+          name="interest"
+          rows="3"
+          class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition resize-none"
+          placeholder="Tell us a bit about yourself and why you want to test TSE-X..."
+        ></textarea>
+      </div>
+
+      <!-- Terms Checkbox -->
+      <label class="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          name="agreeTerms"
+          required
+          class="w-5 h-5 mt-0.5 text-blue-500 bg-gray-800 border-gray-700 rounded focus:ring-blue-500 cursor-pointer"
+        />
+        <span class="text-sm text-gray-400">
+          I agree to provide feedback and understand this is beta software <span class="text-red-400">*</span>
+        </span>
+      </label>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        id="submitBtn"
+        class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition"
+      >
+        Join TestFlight
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500 text-xs mt-6">
+      Your information is used only for TestFlight invites
+    </p>
+  </div>
+
+  <!-- Success Message (hidden by default) -->
+  <div id="successContainer" class="bg-gray-900 rounded-2xl p-8 max-w-md w-full text-center border border-gray-800 hidden">
+    <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-white mb-2">You're on the list!</h2>
+    <p class="text-gray-400">We'll send you a TestFlight invite soon.</p>
+  </div>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbhcZdOhFFoZkvL-TGWg-IL5tRbeDUt9WgKcQZJcuSDavLNpV80omoX0LgkjJ4QLn7/exec';
+
+    document.getElementById('testerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = `
+        <span class="flex items-center justify-center gap-2">
+          <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Submitting...
+        </span>
+      `;
+
+      const formData = {
+        fullName: this.fullName.value,
+        email: this.email.value,
+        iphoneModel: this.iphoneModel.value,
+        iosVersion: this.iosVersion.value,
+        hasArduino: this.hasArduino.value,
+        hasPhantom: this.hasPhantom.checked,
+        hasMetamask: this.hasMetamask.checked,
+        hasCoinbase: this.hasCoinbase.checked,
+        solanaAddress: this.solanaAddress.value,
+        interest: this.interest.value
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById('successContainer').classList.remove('hidden');
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was an error submitting the form. Please try again.');
+        btn.disabled = false;
+        btn.textContent = 'Join TestFlight';
+      }
+    });
+  </script>
+</body>
+</html>
