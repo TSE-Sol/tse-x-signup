@@ -12,6 +12,39 @@
       background-position: right 12px center;
       background-size: 20px;
     }
+    /* Platform toggle */
+    .platform-toggle {
+      position: relative;
+      display: flex;
+      background: rgb(31, 41, 55);
+      border-radius: 12px;
+      padding: 4px;
+      border: 1px solid rgb(55, 65, 81);
+    }
+    .platform-toggle label {
+      flex: 1;
+      text-align: center;
+      padding: 10px 16px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      color: rgb(156, 163, 175);
+      transition: all 0.25s ease;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .platform-toggle input[type="radio"] {
+      display: none;
+    }
+    .platform-toggle input[type="radio"]:checked + label {
+      color: white;
+      background: rgb(55, 65, 81);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gray-950 flex items-center justify-center p-4">
@@ -23,7 +56,7 @@
         <span class="text-white font-bold text-lg">TSE-<span class="text-blue-400">X</span></span>
       </div>
       <h1 class="text-2xl font-bold text-white mb-2">Become a Beta Tester</h1>
-      <p class="text-gray-400">Join the TSE-X TestFlight program</p>
+      <p class="text-gray-400">Join the TSE-X beta testing program</p>
     </div>
 
     <form id="testerForm" class="space-y-5">
@@ -44,7 +77,7 @@
       <!-- Email -->
       <div>
         <label class="block text-sm font-medium text-gray-300 mb-2">
-          Email (Apple ID) <span class="text-red-400">*</span>
+          Email <span class="text-red-400">*</span>
         </label>
         <input
           type="email"
@@ -53,48 +86,54 @@
           class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
           placeholder="your@email.com"
         />
+        <p id="emailHint" class="text-gray-500 text-xs mt-2 hidden">Use your Apple ID email for TestFlight access</p>
       </div>
 
-      <!-- iPhone Model & iOS Version -->
+      <!-- Platform Toggle -->
+      <div>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Platform <span class="text-red-400">*</span>
+        </label>
+        <div class="platform-toggle">
+          <input type="radio" name="platform" id="platformIos" value="ios" required>
+          <label for="platformIos">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            iOS
+          </label>
+          <input type="radio" name="platform" id="platformAndroid" value="android">
+          <label for="platformAndroid">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 11.48V8.21c0-.11-.04-.22-.12-.3l-5.02-5.02a.408.408 0 00-.58 0L6.87 7.9c-.08.08-.12.19-.12.3v3.27c0 .24.19.43.43.43h10c.23 0 .42-.19.42-.43zM7 12.75c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25S7 13.44 7 12.75zm8.5 0c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25zM3.5 17v4.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V17H3.5zm14 0v4.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V17h-3zM1 12.5v5c0 .83.67 1.5 1.5 1.5S4 18.33 4 17.5v-5c0-.83-.67-1.5-1.5-1.5S1 11.67 1 12.5zm19 0v5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5zM6.5 22h11v-6h-11v6z"/></svg>
+            Android
+          </label>
+        </div>
+      </div>
+
+      <!-- Device Model & OS Version -->
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-medium text-gray-300 mb-2">
-            iPhone Model <span class="text-red-400">*</span>
+            Device Model <span class="text-red-400">*</span>
           </label>
           <select
-            name="iphoneModel"
+            name="deviceModel"
+            id="deviceModel"
             required
             class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer"
           >
-            <option value="">Select...</option>
-            <option value="iPhone 17 Pro">iPhone 17 Pro</option>
-            <option value="iPhone 17">iPhone 17</option>
-            <option value="iPhone Air">iPhone Air</option>
-            <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
-            <option value="iPhone 16 Pro">iPhone 16 Pro</option>
-            <option value="iPhone 16 Plus">iPhone 16 Plus</option>
-            <option value="iPhone 16">iPhone 16</option>
-            <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
-            <option value="iPhone 15 Pro">iPhone 15 Pro</option>
-            <option value="iPhone 15 Plus">iPhone 15 Plus</option>
-            <option value="iPhone 15">iPhone 15</option>
-            <option value="iPhone 14 or older">iPhone 14 or older</option>
+            <option value="">Select platform first</option>
           </select>
         </div>
 
         <div>
           <label class="block text-sm font-medium text-gray-300 mb-2">
-            iOS Version
+            OS Version
           </label>
           <select
-            name="iosVersion"
+            name="osVersion"
+            id="osVersion"
             class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition appearance-none cursor-pointer"
           >
-            <option value="">Select...</option>
-            <option value="iOS 26">iOS 26</option>
-            <option value="iOS 25">iOS 25</option>
-            <option value="iOS 24">iOS 24</option>
-            <option value="iOS 23 or older">iOS 23 or older</option>
+            <option value="">Select platform first</option>
           </select>
         </div>
       </div>
@@ -216,12 +255,12 @@
         id="submitBtn"
         class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition"
       >
-        Join TestFlight
+        Join Beta Program
       </button>
     </form>
 
     <p class="text-center text-gray-500 text-xs mt-6">
-      Your information is used only for TestFlight invites
+      Your information is used only for beta testing invites
     </p>
   </div>
 
@@ -233,11 +272,54 @@
       </svg>
     </div>
     <h2 class="text-2xl font-bold text-white mb-2">You're on the list!</h2>
-    <p class="text-gray-400">We'll send you a TestFlight invite soon.</p>
+    <p class="text-gray-400" id="successMessage">We'll send you a beta invite soon.</p>
   </div>
 
   <script>
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzbhcZdOhFFoZkvL-TGWg-IL5tRbeDUt9WgKcQZJcuSDavLNpV80omoX0LgkjJ4QLn7/exec';
+
+    const iosDevices = [
+      'iPhone 17 Pro Max', 'iPhone 17 Pro', 'iPhone 17', 'iPhone Air',
+      'iPhone 16 Pro Max', 'iPhone 16 Pro', 'iPhone 16 Plus', 'iPhone 16',
+      'iPhone 15 Pro Max', 'iPhone 15 Pro', 'iPhone 15 Plus', 'iPhone 15',
+      'iPhone 14 or older'
+    ];
+
+    const androidDevices = [
+      'Samsung Galaxy S25 Ultra', 'Samsung Galaxy S25+', 'Samsung Galaxy S25',
+      'Samsung Galaxy S24 Ultra', 'Samsung Galaxy S24+', 'Samsung Galaxy S24',
+      'Samsung Galaxy A55', 'Samsung Galaxy A35',
+      'Google Pixel 9 Pro XL', 'Google Pixel 9 Pro', 'Google Pixel 9', 'Google Pixel 9a',
+      'Google Pixel 8 Pro', 'Google Pixel 8', 'Google Pixel 8a',
+      'OnePlus 13', 'OnePlus 12',
+      'Other Android'
+    ];
+
+    const iosVersions = ['iOS 26', 'iOS 25', 'iOS 24', 'iOS 23 or older'];
+    const androidVersions = ['Android 16', 'Android 15', 'Android 14', 'Android 13 or older'];
+
+    function populateDropdowns(platform) {
+      const deviceSelect = document.getElementById('deviceModel');
+      const osSelect = document.getElementById('osVersion');
+      const emailHint = document.getElementById('emailHint');
+
+      const devices = platform === 'ios' ? iosDevices : androidDevices;
+      const versions = platform === 'ios' ? iosVersions : androidVersions;
+
+      deviceSelect.innerHTML = '<option value="">Select...</option>' +
+        devices.map(d => `<option value="${d}">${d}</option>`).join('');
+
+      osSelect.innerHTML = '<option value="">Select...</option>' +
+        versions.map(v => `<option value="${v}">${v}</option>`).join('');
+
+      // Show Apple ID hint only for iOS
+      emailHint.classList.toggle('hidden', platform !== 'ios');
+    }
+
+    // Platform toggle listeners
+    document.querySelectorAll('input[name="platform"]').forEach(radio => {
+      radio.addEventListener('change', (e) => populateDropdowns(e.target.value));
+    });
 
     document.getElementById('testerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -254,11 +336,14 @@
         </span>
       `;
 
+      const platform = this.platform.value;
+
       const formData = {
         fullName: this.fullName.value,
         email: this.email.value,
-        iphoneModel: this.iphoneModel.value,
-        iosVersion: this.iosVersion.value,
+        platform: platform,
+        deviceModel: this.deviceModel.value,
+        osVersion: this.osVersion.value,
         hasArduino: this.hasArduino.value,
         hasPhantom: this.hasPhantom.checked,
         hasMetamask: this.hasMetamask.checked,
@@ -279,11 +364,19 @@
         
         document.getElementById('formContainer').classList.add('hidden');
         document.getElementById('successContainer').classList.remove('hidden');
+
+        // Platform-specific success message
+        const msg = document.getElementById('successMessage');
+        if (platform === 'ios') {
+          msg.textContent = "We'll send you a TestFlight invite soon.";
+        } else {
+          msg.textContent = "We'll send you access to the Android beta soon.";
+        }
       } catch (error) {
         console.error('Error:', error);
         alert('There was an error submitting the form. Please try again.');
         btn.disabled = false;
-        btn.textContent = 'Join TestFlight';
+        btn.textContent = 'Join Beta Program';
       }
     });
   </script>
